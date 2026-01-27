@@ -1,0 +1,79 @@
+[
+  {
+    "entity": "PERSON",
+    "start": 20,
+    "end": 32,
+    "confidence": 0.85,
+    "value": "Rahul Sharma"
+  },
+  {
+    "entity": "LOCATION",
+    "start": 54,
+    "end": 63,
+    "confidence": 0.85,
+    "value": "Bangalore"
+  },
+  {
+    "entity": "LOCATION",
+    "start": 65,
+    "end": 74,
+    "confidence": 0.85,
+    "value": "Karnataka"
+  },
+  {
+    "entity": "EMAIL_ADDRESS",
+    "start": 108,
+    "end": 123,
+    "confidence": 1.0,
+    "value": "rahul@gmail.com"
+  },
+  {
+    "entity": "PHONE_NUMBER",
+    "start": 139,
+    "end": 149,
+    "confidence": 0.75,
+    "value": "9876543210"
+  },
+  {
+    "entity": "PAN",
+    "start": 197,
+    "end": 207,
+    "confidence": 0.9,
+    "value": "ABCDE1234F"
+  },
+  {
+    "entity": "AADHAAR",
+    "start": 233,
+    "end": 247,
+    "confidence": 0.85,
+    "value": "7992 7398 7131"
+  },
+  {
+    "entity": "VOTER_ID",
+    "start": 314,
+    "end": 324,
+    "confidence": 0.8,
+    "value": "ABC1234567"
+  },
+  {
+    "entity": "IBAN_CODE",
+    "start": 385,
+    "end": 407,
+    "confidence": 1.0,
+    "value": "DE89370400440532013000"
+  },
+  {
+    "entity": "CREDIT_CARD",
+    "start": 450,
+    "end": 469,
+    "confidence": 1.0,
+    "value": "4111 1111 1111 1111"
+  },
+  {
+    "entity": "ORG_ID",
+    "start": 533,
+    "end": 541,
+    "confidence": 0.8,
+    "value": "ORG12345"
+  }
+]

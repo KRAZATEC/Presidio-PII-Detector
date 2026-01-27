@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Presidio PII Detector</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header class="header">
+  <div class="logo">🛡 Presidio PII Detector</div>
+  <div class="status">● Active</div>
+</header>
+
+<div class="container">
+
+  <!-- INPUT -->
+  <div class="card">
+    <h2>Input</h2>
+
+    <textarea id="inputText" placeholder="Paste text here..."></textarea>
+
+    <label class="slider-label">
+      Confidence Threshold: <span id="thresholdValue">0.50</span>
+    </label>
+    <input type="range" id="threshold" min="0" max="1" step="0.05" value="0.5">
+
+    <div class="actions">
+      <button class="primary" onclick="analyzeText()">Analyze Text</button>
+      <button class="secondary" onclick="maskText()">Mask Text</button>
+    </div>
+
+    <h3>PDF Upload</h3>
+    <div class="upload-box">
+      <input type="file" id="pdfFile" accept="application/pdf">
+      <button class="primary" onclick="analyzePDF()">Analyze PDF</button>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="card">
+    <h2>Results</h2>
+
+    <div class="tabs">
+      <button id="tabHighlight" onclick="showView('highlight')" class="active">
+        Highlight
+      </button>
+      <button onclick="showView('table')">Table</button>
+      <button onclick="showView('json')">JSON</button>
+    </div>
+
+    <div id="highlightView" class="view-box"></div>
+    <div id="tableView" class="view-box hidden"></div>
+    <pre id="jsonView" class="view-box hidden"></pre>
+
+    <div class="download">
+      <button onclick="downloadJSON()">Download JSON</button>
+      <button onclick="downloadCSV()">Download CSV</button>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  🔒 Privacy Note: All data is processed locally and not stored.
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
