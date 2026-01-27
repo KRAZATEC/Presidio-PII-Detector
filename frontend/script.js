@@ -1,7 +1,6 @@
 const API = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
   ? "http://127.0.0.1:8000"
-  : "http://backend:8000";
-
+: "https://presidio-pii-detector-production.up.railway.app"
 let lastEntities = [];
 let lastText = "";
 let isPDF = false;
