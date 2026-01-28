@@ -405,7 +405,7 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ### ⭐ Star this repo if you found it helpful! ⭐
 
-**Made with ❤️ by [KRAZATEC](https://github.com/KRAZATEC)**
+**Made with ❤️**
 
 [Report Bug](https://github.com/KRAZATEC/Presidio-PII-Detector/issues) • [Request Feature](https://github.com/KRAZATEC/Presidio-PII-Detector/issues) • [Discussions](https://github.com/KRAZATEC/Presidio-PII-Detector/discussions)
 
