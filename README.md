@@ -48,7 +48,7 @@
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                   Frontend (React/HTML)                  │
-│              https://selfless-peace-production.up.railway.app │
+│              https://presidio-pii-detector.up.railway.app │
 └────────────────────┬────────────────────────────────────┘
                      │ HTTP/HTTPS
                      │
@@ -325,7 +325,7 @@ Deploy both frontend and backend services to Railway as separate services.
    - Go to Networking tab
    - Click "Generate Domain"
    - Set Port to 80
-   - Copy the generated URL (e.g., `https://selfless-peace-production.up.railway.app`)
+   - Copy the generated URL (e.g., `https://presidio-pii-detector.up.railway.app`)
 
 #### 3. **Update Frontend API Endpoint**
 
@@ -347,7 +347,7 @@ Deploy both frontend and backend services to Railway as separate services.
 
 After deployment, you'll have:
 
-**Frontend:** https://selfless-peace-production.up.railway.app/
+**Frontend:** https://presidio-pii-detector.up.railway.app/
 
 **Backend API:** https://presidio-pii-detector-production.up.railway.app/
 
