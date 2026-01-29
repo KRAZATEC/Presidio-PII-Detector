@@ -32,13 +32,13 @@
 
 ## ✨ Features
 
-- 🔍 **Advanced PII Detection** - Detects multiple PII types including emails, phone numbers, credit cards, SSNs, passport numbers, and custom patterns
+- 🔍 **Advanced PII Detection** - Detects multiple PII types including emails, phone numbers, credit cards, name, bank account numbers, aadhar card number, pan card number, organization IDs
 - 🎭 **Text Masking** - Redact sensitive information from text while maintaining context
 - 📄 **PDF Support** - Extract and analyze text from PDF documents
 - 🎨 **Web Interface** - Modern, intuitive UI for easy interaction
 - 🔌 **RESTful API** - Comprehensive API endpoints for programmatic access
 - 📦 **Containerized** - Docker support for easy deployment
-- 🚀 **Cloud Ready** - Deploy on Railway, AWS, GCP, or any cloud platform
+- 🚀 **Cloud Ready** - Deployed on Railway cloud platform
 - ⚡ **Fast & Scalable** - Built with FastAPI for high performance
 
 ---
@@ -197,7 +197,7 @@ Redact PII entities from text.
 **Request Body:**
 ```json
 {
-  "text": "My SSN is 123-45-6789",
+  "text": "My aadhar is 5647 3498 2848",
   "threshold": 0.5
 }
 ```
@@ -205,7 +205,7 @@ Redact PII entities from text.
 **Response:**
 ```json
 {
-  "masked": "My SSN is XXXXXXXXX"
+  "masked": "My aadhar is XXXX XXXX XXXX"
 }
 ```
 
@@ -234,10 +234,9 @@ Extract text from PDF and detect PII.
 
 - PERSON
 - EMAIL_ADDRESS
-- PHONE_NUMBER
+- PHONE_NUMBER (Mobile Number - India)
 - CREDIT_CARD
-- SSN (Social Security Number)
-- IBAN_CODE
+- BANK_ACCOUNT
 - PAN (Permanent Account Number - India)
 - AADHAAR (Aadhaar Number - India)
 - VOTER_ID (Voter ID - India)
