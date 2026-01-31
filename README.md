@@ -230,7 +230,7 @@ Extract text from PDF and detect PII.
 }
 ```
 
-### Detected Test Cases
+### Detected Entities
 
 - PERSON
 - EMAIL_ADDRESS
@@ -399,7 +399,26 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
+## 🚀 Future Upgrades
+
+- **Multilinguality**: Support for detecting PII across multiple languages to make the tool accessible globally
+- Enhanced detection algorithms with machine learning
+- Real-time detection dashboard
+- API rate limiting and caching improvements
+- Database integration for storing detection logs
+
 ---
+
+## ⚠️ What is Not Working
+
+Currently, there are no known critical issues. However, the following areas may need improvement:
+
+- Some edge cases in PII pattern matching may not be caught
+- Performance optimization for very large documents
+- Support for specialized PII formats from different regions
+
+
+  ---
 
 <div align="center">
 
@@ -410,3 +429,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 [Report Bug](https://github.com/KRAZATEC/Presidio-PII-Detector/issues) • [Request Feature](https://github.com/KRAZATEC/Presidio-PII-Detector/issues) • [Discussions](https://github.com/KRAZATEC/Presidio-PII-Detector/discussions)
 
 </div>
+
+---
+
