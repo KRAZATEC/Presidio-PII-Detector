@@ -390,6 +390,26 @@ A dedicated `TEST` folder has been added to the project containing sample test c
 - Performance validation
 ---
 
+## 🚀 Future Upgrades
+
+- **Multilinguality**: Support for detecting PII across multiple languages to make the tool accessible globally
+- UI  Improvements: Enhanced dark mode, responsive design for mobile devices, improved user experience with better navigation and accessibility features
+- Real-time detection dashboard
+- API rate limiting and caching improvements
+
+---
+
+## ⚠️ What is Not Working
+
+Currently, there are no known critical issues. However, the following areas may need improvement:
+
+- Some edge cases in PII pattern matching may not be caught
+- Performance optimization for very large documents
+- Support for specialized PII formats from different regions
+
+
+  ---
+
 ## 📝 License
 
 Copyright (c) 2025 KRAZATEC
@@ -417,28 +437,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-   
-
-## 🚀 Future Upgrades
-
-- **Multilinguality**: Support for detecting PII across multiple languages to make the tool accessible globally
-- UI  Improvements: Enhanced dark mode, responsive design for mobile devices, improved user experience with better navigation and accessibility features
-- Real-time detection dashboard
-- API rate limiting and caching improvements
 
 ---
-
-## ⚠️ What is Not Working
-
-Currently, there are no known critical issues. However, the following areas may need improvement:
-
-- Some edge cases in PII pattern matching may not be caught
-- Performance optimization for very large documents
-- Support for specialized PII formats from different regions
-
-
-  ---
-
 <div align="center">
 
 ### ⭐ Star this repo if you found it helpful! ⭐
