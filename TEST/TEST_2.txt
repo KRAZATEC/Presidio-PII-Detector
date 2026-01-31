@@ -1,0 +1,15 @@
+Employee Details
+
+Name: Anita Verma
+Email: anita.verma@company.com
+Phone: 9123456789
+
+PAN: QWERT1234Z
+Aadhaar: 1234 5678 9012
+Voter ID: XYZ9876543
+
+Bank Account: DE44500105175407324931
+Credit Card: 5555 4444 3333 1111
+
+Internal Employee ID: ORG67890
+Location: Hyderabad
