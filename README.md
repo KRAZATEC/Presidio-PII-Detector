@@ -405,7 +405,6 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 - Enhanced detection algorithms with machine learning
 - Real-time detection dashboard
 - API rate limiting and caching improvements
-- Database integration for storing detection logs
 
 ---
 
