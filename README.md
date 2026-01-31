@@ -237,6 +237,7 @@ Extract text from PDF and detect PII.
 - PHONE_NUMBER (Mobile Number - India)
 - CREDIT_CARD
 - BANK_ACCOUNT
+- LOCATION
 - PAN (Permanent Account Number - India)
 - AADHAAR (Aadhaar Number - India)
 - VOTER_ID (Voter ID - India)
