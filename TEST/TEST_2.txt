@@ -12,4 +12,5 @@ Bank Account: DE44500105175407324931
 Credit Card: 5555 4444 3333 1111
 
 Internal Employee ID: ORG67890
-Location: Hyderabad
+Location: Bengaluru
+
