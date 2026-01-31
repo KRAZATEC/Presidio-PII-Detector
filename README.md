@@ -230,7 +230,7 @@ Extract text from PDF and detect PII.
 }
 ```
 
-### Detected Entity Types
+### Detected Test Cases
 
 - PERSON
 - EMAIL_ADDRESS
