@@ -402,14 +402,18 @@ A dedicated `TEST` folder has been added to the project containing sample test c
 
 ---
 
-## ⚠️ What is Not Working
+⚠️ What is Not Working
+----------------------
 
-Currently, there are no known critical issues. However, the following areas may need improvement:
+Currently, there are no known critical issues. However, the following areas are known limitations and may need improvement:
 
-- Some edge cases in PII pattern matching may not be caught
-- Performance optimization for very large documents
-- Support for specialized PII formats from different regions
+- **Organization / Employee ID Detection**: Custom `ORG_ID` detection currently works reliably only when the ID starts with the prefix `ORG` (for example, `ORG12345`). IDs with other prefixes or formats are not consistently detected.
+- **Location Coverage**: `LOCATION` entity detection is limited to certain common place names and patterns. Many cities, localities, and less common addresses are not yet recognized, especially outside the currently tuned regions.
+- Some edge cases in PII pattern matching may not be caught.
+- Performance optimization for very large documents.
+- Support for specialized PII formats from different regions.
 
+---
 
 ## 🤝 Contributing
 
