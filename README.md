@@ -371,6 +371,39 @@ Connect them via environment variables in your Railway project.
 
 ---
 
+🚀 Deploying to Other Platforms
+-------------------------------
+### Deploying to AWS (ECS Fargate Example)
+
+1. **Build and push images**
+   - Build images locally or in CI.
+   - Push to Amazon ECR.
+
+2. **Create ECS task definition**
+   - Define containers for `backend` and `frontend` using your ECR images.
+   - Set environment variables from AWS SSM Parameter Store or Secrets Manager.
+
+3. **Create ECS service**
+   - Use Fargate launch type.
+   - Attach an Application Load Balancer.
+   - Map HTTP/HTTPS listeners to the frontend container port.
+
+4. **Configure networking and domain**
+   - Use a public subnet and security group allowing HTTP/HTTPS.
+   - Point your domain to the ALB via Route 53 (optional).
+
+### Deploying to Azure Container Apps / Web App for Containers
+
+1. **Push Docker images** to Azure Container Registry.
+2. **Create a Web App for Containers** (or Container App) from the Azure Portal.
+3. **Set image source** to your ACR images for backend and frontend.
+4. **Configure environment variables** in the Azure Portal.
+5. **Assign custom domain and TLS** if needed.
+
+> Note: Exact steps will vary per provider, but the core requirement is the same: run the Docker images (or `docker-compose` equivalent), supply the required environment variables, and expose the frontend over HTTP/HTTPS.
+
+---
+
 ### 🧨 Testing
 
 A dedicated `TEST` folder has been added to the project containing sample test cases. This folder is used to validate the functionality and working of the website.
@@ -388,6 +421,37 @@ A dedicated `TEST` folder has been added to the project containing sample test c
 - Edge cases and special formatting
 - Different document formats
 - Performance validation
+---
+
+🧩 Troubleshooting
+------------------
+
+If something is not working as expected, check the common issues below before opening an issue.
+
+- **Frontend not loading / blank page**
+  - Make sure Docker containers are running: `docker ps` (you should see both frontend and backend services).
+  - Verify you are opening `http://localhost:80` in the browser when running via Docker Compose.
+
+- **Backend API not reachable**
+  - Open `http://localhost:8000/docs` to confirm the FastAPI server is up.
+  - If it fails, check container logs: `docker-compose logs backend`.
+  - Ensure no other service is already using port `8000`.
+
+- **PII not being detected correctly**
+  - Confirm the text is in English (multilingual detection is not yet supported).
+  - For **Employee/Organization IDs**, only IDs starting with `ORG` (like `ORG12345`) are reliably detected right now.
+  - For **Location**, only some common places are detected; many cities/localities are not yet recognized.
+
+- **Docker build or start fails**
+  - Run `docker-compose down --volumes --remove-orphans` and then `docker-compose up --build`.
+  - Ensure Docker and Docker Compose are installed and updated to the latest stable versions.
+
+- **PDF upload issues**
+  - Verify the PDF is not password-protected or corrupted.
+  - Check backend logs for PDF parsing errors (`pdfplumber` related messages).
+
+If the problem persists, please [open an issue](https://github.com/KRAZATEC/Presidio-PII-Detector/issues) with logs, steps to reproduce, and sample input.
+
 ---
 
 ## 🚀 Future Upgrades
@@ -431,6 +495,15 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 <div align="center">
 
 ### ⭐ Star this repo if you found it helpful! ⭐
+
+---
+## 📄 License
+
+This project is licensed under the MIT License.  
+You are free to use, modify, and distribute this software for personal or commercial purposes, as long as the original copyright
+and license notice are included in all copies or substantial portions of the software.
+
+---
 
 **Made with ❤️**
 
