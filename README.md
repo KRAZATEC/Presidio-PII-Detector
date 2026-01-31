@@ -394,6 +394,9 @@ A dedicated `TEST` folder has been added to the project containing sample test c
 
 - **Multilinguality**: Support for detecting PII across multiple languages to make the tool accessible globally
 - UI  Improvements: Enhanced dark mode, responsive design for mobile devices, improved user experience with better navigation and accessibility features
+- **Expanded Location Detection**: Detection for all kinds of locations (cities, states, countries, full addresses, ZIP/postal codes, GPS coordinates, landmarks, facilities, and points of interest)
+- **Custom Entity Rules**: UI and config support for user-defined regex rules, lookup-based entities, and context-aware custom PII types without code changes
+- **Storage & Integrations**: Optional integration with object storage (S3, GCS), databases, and document sources like SharePoint, Google Drive, and S3 buckets
 - Real-time detection dashboard
 - API rate limiting and caching improvements
 
