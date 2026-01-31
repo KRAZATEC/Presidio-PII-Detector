@@ -371,6 +371,25 @@ Connect them via environment variables in your Railway project.
 
 ---
 
+### 🧨 Testing
+
+A dedicated `TEST` folder has been added to the project containing sample test cases. This folder is used to validate the functionality and working of the website.
+
+**To run tests:**
+
+1. Navigate to the TEST folder
+2. Review the sample test cases provided
+3. Execute the test cases against the application to verify correct PII detection and redaction
+4. Ensure all detections match expected outputs
+
+**Test Coverage:**
+
+- Sample documents with various PII types
+- Edge cases and special formatting
+- Different document formats
+- Performance validation
+---
+
 ## 📝 License
 
 Copyright (c) 2025 KRAZATEC
@@ -398,11 +417,12 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+   
 
 ## 🚀 Future Upgrades
 
 - **Multilinguality**: Support for detecting PII across multiple languages to make the tool accessible globally
-- Enhanced detection algorithms with machine learning
+- UI  Improvements: Enhanced dark mode, responsive design for mobile devices, improved user experience with better navigation and accessibility features
 - Real-time detection dashboard
 - API rate limiting and caching improvements
 
