@@ -6,3 +6,6 @@ spacy
 python-multipart
 pypdf
 pdfplumber
+pytest
+httpx
+reportlab
