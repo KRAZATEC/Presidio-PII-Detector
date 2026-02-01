@@ -1,119 +1,82 @@
 import os
-import requests
+import json
+from presidio_analyzer import AnalyzerEngine
+from backend.recognizers import (
+    PANRecognizer,
+    AadhaarRecognizer,
+    VoterIDRecognizer,
+    OrgIDRecognizer,
+)
+from backend.pdf_utils import extract_text_from_pdf
 
-BACKEND_URL = os.getenv("BACKEND_URL", "http://backend:8000")
+# ================= CONFIG =================
 
-ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
-TEST_DIR = os.path.join(ROOT_DIR, "TEST")
+TEST_DIR = "TEST"
 
-TEXT_FILES = [
-    "TEST_1.txt",
-    "TEST_2.txt",
-    "TEST_3.txt",
-    "EDGE_TEST.txt",
-    "NEG_TEST.txt",
-]
+ALLOWED_ENTITIES = {
+    "PERSON",
+    "EMAIL_ADDRESS",
+    "PHONE_NUMBER",
+    "PAN",
+    "AADHAAR",
+    "VOTER_ID",
+    "IBAN_CODE",
+    "CREDIT_CARD",
+    "LOCATION",
+    "ORG_ID",
+}
 
-PDF_FILES = [
-    "TEST_PDF.pdf",
-]
+# ================= SETUP =================
 
+def setup_analyzer():
+    analyzer = AnalyzerEngine()
+    analyzer.registry.add_recognizer(PANRecognizer())
+    analyzer.registry.add_recognizer(AadhaarRecognizer())
+    analyzer.registry.add_recognizer(VoterIDRecognizer())
+    analyzer.registry.add_recognizer(OrgIDRecognizer())
+    return analyzer
 
-def call_analyze(text, threshold=0.5):
-    resp = requests.post(
-        f"{BACKEND_URL}/analyze",
-        json={"text": text, "threshold": threshold},
-        timeout=20,
-    )
-    resp.raise_for_status()
-    return resp.json()
+# ================= ANALYSIS =================
 
+def analyze_text(text, analyzer):
+    results = analyzer.analyze(text=text, language="en")
 
-def call_mask(text, threshold=0.5):
-    resp = requests.post(
-        f"{BACKEND_URL}/mask",
-        json={"text": text, "threshold": threshold},
-        timeout=20,
-    )
-    resp.raise_for_status()
-    return resp.json()
-
-
-def call_upload_pdf(path, threshold=0.5):
-    with open(path, "rb") as f:
-        files = {"file": (os.path.basename(path), f, "application/pdf")}
-        resp = requests.post(
-            f"{BACKEND_URL}/upload-pdf",
-            files=files,
-            data={"threshold": str(threshold)},
-            timeout=60,
-        )
-    resp.raise_for_status()
-    return resp.json()
-
-
-def run_text_tests():
-    print("======== TEXT TESTS ========")
-    for fname in TEXT_FILES:
-        path = os.path.join(TEST_DIR, fname)
-        if not os.path.isfile(path):
-            print(f"[SKIP] {fname} not found at {path}")
+    output = []
+    for r in results:
+        if r.entity_type not in ALLOWED_ENTITIES:
             continue
 
-        print(f"\n--- FILE: {fname} ---")
-        with open(path, "r", encoding="utf-8") as f:
-            text = f.read().strip()
+        output.append({
+            "entity": r.entity_type,
+            "value": text[r.start:r.end],
+            "confidence": round(r.score, 2),
+            "start": r.start,
+            "end": r.end
+        })
 
-        print("\nInput:")
-        print(text)
+    return output
 
-        try:
-            res_analyze = call_analyze(text)
-            print("\n/analyze response:")
-            print(res_analyze)
-        except Exception as e:
-            print(f"\nERROR in /analyze: {e}")
-
-        try:
-            res_mask = call_mask(text)
-            print("\n/mask response:")
-            print(res_mask)
-        except Exception as e:
-            print(f"\nERROR in /mask: {e}")
-
-        print("\n---------------------------")
-
-
-def run_pdf_tests():
-    print("\n======== PDF TESTS ========")
-    for fname in PDF_FILES:
-        path = os.path.join(TEST_DIR, fname)
-        if not os.path.isfile(path):
-            print(f"[SKIP] {fname} not found at {path}")
-            continue
-
-        print(f"\n--- PDF FILE: {fname} ---")
-        try:
-            res_pdf = call_upload_pdf(path)
-            print("\n/upload-pdf response:")
-            print(res_pdf)
-        except Exception as e:
-            print(f"\nERROR in /upload-pdf: {e}")
-
-        print("\n---------------------------")
-
+# ================= RUN TESTS =================
 
 def main():
-    print("Presidio PII Detector – Automated Test Runner")
-    print(f"BACKEND_URL = {BACKEND_URL}")
-    print(f"TEST_DIR    = {TEST_DIR}")
-    print()
+    analyzer = setup_analyzer()
+    final_output = {}
 
-    run_text_tests()
-    run_pdf_tests()
+    for file in os.listdir(TEST_DIR):
+        path = os.path.join(TEST_DIR, file)
 
-    print("\n======== DONE ========")
+        if file.endswith(".txt"):
+            with open(path, "r", encoding="utf-8") as f:
+                text = f.read()
+            final_output[file] = analyze_text(text, analyzer)
 
+        elif file.endswith(".pdf"):
+            text = extract_text_from_pdf(path)
+            final_output[file] = analyze_text(text, analyzer)
+
+    print(json.dumps(final_output, indent=2))
+
+# ================= ENTRY =================
 
 if __name__ == "__main__":
     main()
