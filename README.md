@@ -64,6 +64,33 @@
 │  • spaCy NLP Models                                      │
 └─────────────────────────────────────────────────────────┘
 ```
+### 📦 Project Structure
+
+```bash
+Presidio-PII-Detector/
+├── backend/                  # FastAPI backend with Presidio integration
+│   ├── main.py               # FastAPI application entrypoint
+│   ├── recognizers.py        # Custom PII recognizers (PAN, Aadhaar, Voter ID, ORG_ID, etc.)
+│   ├── requirements.txt      # Backend Python dependencies
+│   └── ...                   # Additional backend modules, configs, and utilities
+├── frontend/                 # Static frontend for interacting with the API
+│   ├── index.html            # Main UI
+│   ├── script.js             # Frontend logic and API calls
+│   ├── style.css             # Styling
+│   └── ...                   # Other frontend assets
+├── TEST/                     # Sample test data used for validation
+│   ├── TEST_1.txt            # Standard PII test cases
+│   ├── TEST_2.txt            # Additional PII scenarios
+│   ├── TEST_3.txt            # Mixed PII entities
+│   ├── EDGE_TEST.txt         # Edge-case inputs and tricky formats
+│   ├── NEG_TEST.txt          # Negative cases (little/no PII, used to check false positives)
+│   └── TEST_PDF.pdf          # PDF document used to test /upload-pdf endpoint
+├── run_tests.py              # Local test runner (host machine → calls http://localhost:8000)
+├── run_test_docker.py        # Docker test runner (inside backend container → calls http://backend:8000)
+├── docker-compose.yml        # Orchestrates backend and frontend services
+├── 1_presidio.py             # Helper / experimentation script for Presidio setup
+├── README.md                 # Project overview and documentation
+└── .idea/                    # IDE configuration (PyCharm/IntelliJ project files)
 
 ---
 
@@ -459,7 +486,7 @@ A dedicated `TEST` folder has been added to the project containing sample test c
 
 Use this script to validate the API from your local machine without Docker:
 
-bash
+
 # From project root
 pip install -r backend/requirements.txt
 
