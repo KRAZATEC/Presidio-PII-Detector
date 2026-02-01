@@ -454,6 +454,33 @@ A dedicated `TEST` folder has been added to the project containing sample test c
 - Edge cases and special formatting
 - Different document formats
 - Performance validation
+
+### Running Tests (Local Environment)
+
+Use this script to validate the API from your local machine without Docker:
+
+bash
+# From project root
+pip install -r backend/requirements.txt
+
+# Backend must be running locally on http://localhost:8000
+BACKEND_URL=http://localhost:8000 python run_tests.py
+This will read all sample files from the TEST directory and print the /analyze, /mask, and /upload-pdf responses directly to your terminal.
+
+Running Tests (Inside Docker)
+Use this script when the application is running via Docker / Docker Compose:
+
+bash
+# From project root
+docker-compose up -d
+
+# Enter the backend container
+docker exec -it presidio-pii-detector-backend-1 bash
+
+# Inside container
+cd /app
+python run_test_docker.py
+run_tests.py is intended for local environment execution, while run_test_docker.py is designed to run inside the backend Docker container, using the same test data from the TEST folder and printing all results to the container’s command line for inspection.
 ---
 
 🧩 Troubleshooting
