@@ -1,4 +1,4 @@
-# 🛡️ Presidio PII Detector
+                # 🛡️ Presidio PII Detector
 
 <div align="center">
 
@@ -27,6 +27,7 @@
 - [☁️ Railway Deployment](#railway-deployment)
 - [📝 License](#license)
 - [🤝 Contributing](#contributing)
+- - [⚙️ Confidence Threshold](#confidence-threshold)
 
 ---
 
@@ -40,6 +41,7 @@
 - 📦 **Containerized** - Docker support for easy deployment
 - 🚀 **Cloud Ready** - Deployed on Railway cloud platform
 - ⚡ **Fast & Scalable** - Built with FastAPI for high performance
+- - 🍎 **Confidence Threshold** - Control detection sensitivity with adjustable confidence score filtering (0.0-1.0) to reduce false positives
 
 ---
 
@@ -229,6 +231,37 @@ Extract text from PDF and detect PII.
   ]
 }
 ```
+
+### Confidence Threshold
+
+**Purpose:** The confidence threshold controls the minimum confidence score (0.0 to 1.0) required for an entity to be reported as detected. This feature helps reduce false positives and improves detection accuracy.
+
+**How It Works:**
+
+- **Threshold Range:** Values range from 0.0 (accept all detections) to 1.0 (only accept perfect matches)
+- **Default Value:** 0.5 (detects entities with 50% or higher confidence)
+- **Impact on Detection:** Higher thresholds reduce false positives but may miss some legitimate PII; lower thresholds catch more entities but with higher false positive rates
+- **Entity-Specific:** Each PII entity type has its own confidence score based on the underlying NLP model's certainty
+
+**Usage Example:**
+
+- Set threshold to **0.8+** for high-precision scenarios (fewer false positives, stricter filtering)
+- Set threshold to **0.5-0.7** for balanced detection (default behavior)
+- Set threshold to **0.3-0.5** for high-recall scenarios (catch more PII, accept more false positives)
+
+**API Usage:**
+
+When calling the `/analyze` or `/mask` endpoints, include the `threshold` parameter:
+
+```json
+{
+  "text": "Contact me at john@example.com",
+  "threshold": 0.8
+}
+```
+
+Only entities with confidence >= 0.8 will be returned in the response.
+
 
 ### Detected Entities
 
@@ -449,6 +482,7 @@ If something is not working as expected, check the common issues below before op
 - **PDF upload issues**
   - Verify the PDF is not password-protected or corrupted.
   - Check backend logs for PDF parsing errors (`pdfplumber` related messages).
+  - - **Note on PDF Processing Limitations:** In PDF uploads, text highlighting functionality is currently not working. Only table extraction and JSON script output are available for PDF analysis. For highlighted text output, please use the direct text input feature instead.
 
 If the problem persists, please [open an issue](https://github.com/KRAZATEC/Presidio-PII-Detector/issues) with logs, steps to reproduce, and sample input.
 
