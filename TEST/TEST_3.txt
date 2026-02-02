@@ -1,7 +1,7 @@
 About Me
 
 My name is Ankit Verma and I live in Mumbai, Maharashtra.
-You can contact me at ankit.verma@example.com or call me on 9123456789.
+You can contact me at ankit.verma@example.com or by phone on 9123456789.
 
 For official identification, my PAN number is PQRES5678K and my Aadhaar number is 5123 4578 9021.
 I am also registered with the Election Commission under Voter ID XYZ7654321.
@@ -10,3 +10,4 @@ For salary purposes, my bank account number is FR1420041010050500013M02606.
 I occasionally use my credit card number 5500 0000 0000 0004 for online purchases.
 
 At my organization, my employee ID is ORG98765.
+
