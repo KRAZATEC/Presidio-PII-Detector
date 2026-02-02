@@ -27,7 +27,7 @@
 - [☁️ Railway Deployment](#railway-deployment)
 - [📝 License](#license)
 - [🤝 Contributing](#contributing)
-- - [⚙️ Confidence Threshold](#confidence-threshold)
+- [⚙️ Confidence Threshold](#confidence-threshold)
 
 ---
 
@@ -41,7 +41,7 @@
 - 📦 **Containerized** - Docker support for easy deployment
 - 🚀 **Cloud Ready** - Deployed on Railway cloud platform
 - ⚡ **Fast & Scalable** - Built with FastAPI for high performance
-- - 🍎 **Confidence Threshold** - Control detection sensitivity with adjustable confidence score filtering (0.0-1.0) to reduce false positives
+- 🍎 **Confidence Threshold** - Control detection sensitivity with adjustable confidence score filtering (0.0-1.0) to reduce false positives
 
 ---
 
@@ -91,7 +91,7 @@ Presidio-PII-Detector/
 ├── 1_presidio.py             # Helper / experimentation script for Presidio setup
 ├── README.md                 # Project overview and documentation
 └── .idea/                    # IDE configuration (PyCharm/IntelliJ project files)
-
+```
 ---
 
 ## 🛠️ Tech Stack
@@ -497,7 +497,7 @@ This will read all sample files from the TEST directory and print the /analyze, 
 Running Tests (Inside Docker)
 Use this script when the application is running via Docker / Docker Compose:
 
-bash
+```bash
 # From project root
 docker-compose up -d
 
@@ -509,7 +509,7 @@ cd /app
 python run_test_docker.py
 run_tests.py is intended for local environment execution, while run_test_docker.py is designed to run inside the backend Docker container, using the same test data from the TEST folder and printing all results to the container’s command line for inspection.
 ---
-
+```
 🧩 Troubleshooting
 ------------------
 
@@ -559,7 +559,6 @@ If the problem persists, please [open an issue](https://github.com/KRAZATEC/Pres
 
 Currently, there are no known critical issues. However, the following areas are known limitations and may need improvement:
 
-- **Organization / Employee ID Detection**: Custom `ORG_ID` detection currently works reliably only when the ID starts with the prefix `ORG` (for example, `ORG12345`). IDs with other prefixes or formats are not consistently detected.
 - **Location Coverage**: `LOCATION` entity detection is limited to certain common place names and patterns. Many cities, localities, and less common addresses are not yet recognized, especially outside the currently tuned regions.
 - Some edge cases in PII pattern matching may not be caught.
 - Performance optimization for very large documents.
