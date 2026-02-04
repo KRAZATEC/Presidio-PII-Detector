@@ -486,7 +486,7 @@ A dedicated `TEST` folder has been added to the project containing sample test c
 
 Use this script to validate the API from your local machine without Docker:
 
-
+```bash
 # From project root
 pip install -r backend/requirements.txt
 
