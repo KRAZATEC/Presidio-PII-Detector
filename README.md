@@ -497,7 +497,7 @@ This will read all sample files from the TEST directory and print the /analyze, 
 Running Tests (Inside Docker)
 Use this script when the application is running via Docker / Docker Compose:
 
-```bash
+
 # From project root
 docker-compose up -d
 
